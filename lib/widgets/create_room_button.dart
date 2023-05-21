@@ -10,12 +10,12 @@ class CreateRoomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           border: Border.all(width: 2, color: Colors.purple)),
       child: TextButton.icon(
-        label: Text(
+        label: const Text(
           'Create\nRoom',
           style: TextStyle(fontSize: 10),
         ),
         onPressed: onpress,
-        icon: Icon(
+        icon: const Icon(
           Icons.video_call,
           color: Colors.purpleAccent,
         ),

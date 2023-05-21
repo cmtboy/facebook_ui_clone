@@ -1,9 +1,9 @@
 import 'package:facebook_ui_clone/config/palette.dart';
 import 'package:facebook_ui_clone/data/data.dart';
-import 'package:facebook_ui_clone/models/user_model.dart';
 import 'package:facebook_ui_clone/widgets/circle_button.dart';
 import 'package:facebook_ui_clone/widgets/create_post_container.dart';
 import 'package:facebook_ui_clone/widgets/rooms.dart';
+import 'package:facebook_ui_clone/widgets/stories.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           centerTitle: false,
           backgroundColor: Colors.white,
           floating: true,
-          title: Text(
+          title: const Text(
             'facebook',
             style: TextStyle(
               fontSize: 28.0,
@@ -29,27 +29,28 @@ class HomeScreen extends StatelessWidget {
           ),
           actions: [
             CircleButton(
-                icon: Icon(Icons.search),
-                onpress: () {
-                  print('search');
-                },
-                size: 30),
+                icon: const Icon(Icons.search), onpress: () {}, size: 30),
             CircleButton(
-                icon: Icon(MdiIcons.facebookMessenger),
-                onpress: () {
-                  print('message');
-                },
+                icon: const Icon(MdiIcons.facebookMessenger),
+                onpress: () {},
                 size: 30)
           ],
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
             child: CreatePostContainer(
           currentUser: currentUser,
         )),
-        SliverPadding(
+        const SliverPadding(
           padding: EdgeInsets.only(top: 10),
           sliver: SliverToBoxAdapter(child: Rooms(onlineUsers: onlineUsers)),
-        )
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.only(
+            top: 10,
+          ),
+          sliver: SliverToBoxAdapter(
+              child: Stories(currentUser: currentUser, stories: stories)),
+        ),
       ]),
     );
   }

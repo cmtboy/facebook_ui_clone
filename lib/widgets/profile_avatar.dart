@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar(
-      {super.key, required this.imageUrl, this.isOnline = true});
+      {super.key,
+      required this.imageUrl,
+      this.isOnline = true,
+      this.hasCircle = false});
   final String imageUrl;
   final bool isOnline;
+  final bool hasCircle;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +18,12 @@ class ProfileAvatar extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 20,
-          backgroundColor: Colors.grey[200],
-          backgroundImage: CachedNetworkImageProvider(imageUrl),
+          backgroundColor: Palette.facebookBlue,
+          child: CircleAvatar(
+            radius: hasCircle ? 17 : 20,
+            backgroundColor: Colors.grey[200],
+            backgroundImage: CachedNetworkImageProvider(imageUrl),
+          ),
         ),
         isOnline
             ? Positioned(
@@ -29,7 +37,7 @@ class ProfileAvatar extends StatelessWidget {
                       shape: BoxShape.circle,
                       border: Border.all(width: 2, color: Colors.white)),
                 ))
-            : SizedBox.shrink()
+            : const SizedBox.shrink()
       ],
     );
   }
