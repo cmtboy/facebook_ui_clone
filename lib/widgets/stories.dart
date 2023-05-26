@@ -71,9 +71,10 @@ class StoryCard extends StatelessWidget {
                 ? Container(
                     height: 40,
                     width: 40,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle, color: Colors.white),
-                    child: IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+                    child: IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.add)),
                   )
                 : ProfileAvatar(
                     imageUrl: story!.user.imageUrl,
@@ -88,8 +89,8 @@ class StoryCard extends StatelessWidget {
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               isAddStory ? "Add to Story" : story!.user.name,
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
             ))
       ],
     );
