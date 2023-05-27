@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_ui_clone/models/post_model.dart';
 import 'package:facebook_ui_clone/widgets/profile_avatar.dart';
+import 'package:facebook_ui_clone/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 class PostContainer extends StatelessWidget {
@@ -10,28 +11,35 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          PostHeader(post: post),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(post.caption),
-          post.imageUrl != null
-              ? Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-                  child: CachedNetworkImage(imageUrl: post.imageUrl!))
-              : const SizedBox.shrink(),
-          const SizedBox(
-            height: 8,
-          ),
-          PostStatas(post: post),
-        ],
+    final bool isDesktop = Responsive.isDesktop(context);
+    return Card(
+      elevation: isDesktop ? 1 : 0,
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: isDesktop ? 5 : 0),
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+          : null,
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            PostHeader(post: post),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(post.caption),
+            post.imageUrl != null
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                    child: CachedNetworkImage(imageUrl: post.imageUrl!))
+                : const SizedBox.shrink(),
+            const SizedBox(
+              height: 8,
+            ),
+            PostStatas(post: post),
+          ],
+        ),
       ),
     );
   }

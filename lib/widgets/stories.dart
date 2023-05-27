@@ -3,6 +3,7 @@ import 'package:facebook_ui_clone/config/palette.dart';
 import 'package:facebook_ui_clone/models/story_model.dart';
 import 'package:facebook_ui_clone/models/user_model.dart';
 import 'package:facebook_ui_clone/widgets/profile_avatar.dart';
+import 'package:facebook_ui_clone/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Stories extends StatelessWidget {
@@ -15,7 +16,7 @@ class Stories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      color: Colors.white,
+      color: Responsive.isDesktop(context) ? Colors.transparent : Colors.white,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 1 + stories.length,
