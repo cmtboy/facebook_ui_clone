@@ -2,6 +2,7 @@ import 'package:facebook_ui_clone/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:facebook_ui_clone/widgets/custom_tab_bar.dart';
+import 'package:facebook_ui_clone/widgets/responsive.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({super.key});
@@ -36,17 +37,19 @@ class _NavScreenState extends State<NavScreen> {
       length: icons.length,
       child: Scaffold(
         body: IndexedStack(index: selectedIndex, children: screens),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 12.0),
-          child: CustomTabBar(
-              icons: icons,
-              index: selectedIndex,
-              onTap: (index) {
-                setState(() {
-                  selectedIndex = index;
-                });
-              }),
-        ),
+        bottomNavigationBar: !Responsive.isDesktop(context)
+            ? Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: CustomTabBar(
+                    icons: icons,
+                    index: selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    }),
+              )
+            : SizedBox.shrink(),
       ),
     );
   }
