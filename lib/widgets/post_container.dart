@@ -158,6 +158,7 @@ class PostHeader extends StatelessWidget {
                 Text('${post.timeAgo} .'),
                 Icon(
                   Icons.public,
+                  size: 15,
                   color: Colors.grey[400],
                 )
               ],
