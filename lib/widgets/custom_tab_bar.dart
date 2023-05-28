@@ -19,10 +19,10 @@ class CustomTabBar extends StatelessWidget {
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
           border: isBottomIndecator
-              ? Border(
+              ? const Border(
                   bottom: BorderSide(color: Palette.facebookBlue, width: 3),
                 )
-              : Border(
+              : const Border(
                   top: BorderSide(color: Palette.facebookBlue, width: 3),
                 )),
       tabs: icons

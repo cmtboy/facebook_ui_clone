@@ -26,8 +26,8 @@ class CustomAppBar extends StatelessWidget {
         BoxShadow(color: Colors.black12, offset: Offset(0, 2), blurRadius: 4),
       ]),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Expanded(
-          child: const Text(
+        const Expanded(
+          child: Text(
             'facebook',
             style: TextStyle(
               fontSize: 32.0,
@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: double.infinity,
           width: 600,
           child: CustomTabBar(
@@ -54,19 +54,20 @@ class CustomAppBar extends StatelessWidget {
                 imageUrl: currentUser.imageUrl,
                 hasCircle: false,
                 isOnline: false),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             InkWell(
               onTap: () {},
               child: Text(
                 currentUser.name,
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
-            CircleButton(icon: Icon(Icons.search), onpress: () {}, size: 30),
             CircleButton(
-                icon: Icon(MdiIcons.facebookMessenger),
+                icon: const Icon(Icons.search), onpress: () {}, size: 30),
+            CircleButton(
+                icon: const Icon(MdiIcons.facebookMessenger),
                 onpress: () {},
                 size: 30),
           ],

@@ -2,7 +2,9 @@ import 'package:facebook_ui_clone/config/palette.dart';
 import 'package:facebook_ui_clone/data/data.dart';
 import 'package:facebook_ui_clone/models/post_model.dart';
 import 'package:facebook_ui_clone/widgets/circle_button.dart';
+import 'package:facebook_ui_clone/widgets/contact_list.dart';
 import 'package:facebook_ui_clone/widgets/create_post_container.dart';
+import 'package:facebook_ui_clone/widgets/more_options_list.dart';
 import 'package:facebook_ui_clone/widgets/post_container.dart';
 import 'package:facebook_ui_clone/widgets/responsive.dart';
 import 'package:facebook_ui_clone/widgets/rooms.dart';
@@ -96,14 +98,18 @@ class DesktopView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Flexible(
+        const Flexible(
           flex: 2,
-          child: Container(
-            color: Colors.orange,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.all(12),
+              child: MoreOptionsList(currentUser: currentUser),
+            ),
           ),
         ),
-        Spacer(),
-        Container(
+        const Spacer(),
+        SizedBox(
           width: 600,
           child: CustomScrollView(controller: scrollController, slivers: [
             SliverPadding(
@@ -127,12 +133,17 @@ class DesktopView extends StatelessWidget {
             }, childCount: posts.length))
           ]),
         ),
-        Spacer(),
-        Flexible(
-            flex: 2,
-            child: Container(
-              color: Colors.green,
-            ))
+        const Spacer(),
+        const Flexible(
+          flex: 2,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: EdgeInsets.all(12),
+              child: ContactList(users: onlineUsers),
+            ),
+          ),
+        )
       ],
     );
   }
